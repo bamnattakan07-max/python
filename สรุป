@@ -1,0 +1,483 @@
+
+ทบทวนพื้นฐานของ Python
+Python คืออะไร?
+บทนำ : Python เป็นภาษาโปรแกรมอเนกประสงค์ที่ขึ้นชื่อเรื่องความเรียบง่ายและใช้งานง่าย Python ถูกนำไปใช้ในหลายสาขา เช่น วิทยาศาสตร์ข้อมูลและการเรียนรู้ของเครื่อง การพัฒนาเว็บ การเขียนสคริปต์และระบบอัตโนมัติ ระบบฝังตัวและ IoT และอีกมากมาย
+กรณีการใช้งานทั่วไป : Python ถูกนำไปใช้ในด้านวิทยาศาสตร์ข้อมูล การเรียนรู้ของเครื่อง การพัฒนาเว็บ ความปลอดภัยทางไซเบอร์ ระบบอัตโนมัติ และไมโครคอมพิวเตอร์ เช่น Raspberry Pi และบอร์ดที่ใช้งานร่วมกับ MicroPython ได้
+ตัวแปร
+การประกาศตัวแปร : ในการประกาศตัวแปร คุณเริ่มต้นด้วยชื่อตัวแปร ตามด้วยตัวดำเนินการกำหนดค่า ( =) และตามด้วยค่า ซึ่งอาจเป็นตัวเลข สตริง บูลีน ฯลฯ ต่อไปนี้เป็นตัวอย่างบางส่วน:
+name = 'John Doe'
+age = 25
+หลักเกณฑ์การตั้งชื่อตัวแปร : ต่อไปนี้คือหลักเกณฑ์การตั้งชื่อที่คุณควรใช้สำหรับรถยนต์:
+
+ชื่อตัวแปรต้องขึ้นต้นด้วยตัวอักษรหรือเครื่องหมายขีดล่าง (_) เท่านั้น ห้ามขึ้นต้นด้วยตัวเลข
+ชื่อตัวแปรสามารถประกอบด้วยตัวอักษรและตัวเลข (az, AZ, 0-9) และเครื่องหมายขีดล่าง (_) เท่านั้น
+ชื่อตัวแปรนั้นคำนึงถึงตัวพิมพ์ใหญ่และตัวพิมพ์เล็ก — age, Age, และAGEถือว่าไม่ซ้ำกันทั้งหมด
+ชื่อตัวแปรไม่สามารถเป็นคำสงวนของ Python เช่นif`@` class, `@` หรือ ` def@` ได้
+ชื่อตัวแปรที่มีหลายคำจะคั่นด้วยเครื่องหมายขีดล่าง เช่นsnake_case.
+ความคิดเห็น
+คอมเมนต์แบบบรรทัดเดียว : คอมเมนต์ประเภทนี้ควรใช้สำหรับบันทึกสั้นๆ ที่คุณต้องการใส่ไว้ในโค้ดของคุณ
+# This is a single line comment
+ข้อความหลายบรรทัด : ข้อความประเภทนี้สามารถใช้เพื่อเขียนบันทึกเพิ่มเติมหรือใช้เพื่อแสดงความคิดเห็นในส่วนของโค้ดได้
+"""
+This is a multi-line string.
+Here is some code commented out.
+
+name = 'John Doe'
+age = 25
+"""
+print()ฟังก์ชัน : หากต้องการพิมพ์ข้อมูลออกทางคอนโซล คุณสามารถใช้print()ฟังก์ชันได้ดังนี้:
+print('Hello world!') # Hello world!
+ประเภทข้อมูลทั่วไปใน Python
+บทนำ : Python เป็นภาษาที่มีการกำหนดประเภทตัวแปรแบบไดนามิกเช่นเดียวกับ JavaScript ซึ่งหมายความว่าคุณไม่จำเป็นต้องประกาศประเภทตัวแปรอย่างชัดเจน ภาษาจะทราบประเภทของตัวแปรโดยอิงจากสิ่งที่คุณกำหนดให้กับตัวแปรนั้น
+จำนวนเต็ม : จำนวนเต็มที่ไม่มีทศนิยม:
+my_integer_var = 10
+print('Integer:', my_integer_var) # Integer: 10
+Float : ตัวเลขที่มีทศนิยม:
+my_float_var = 4.50
+print('Float:', my_float_var) # Float: 4.5
+สตริง : ลำดับของอักขระที่อยู่ในเครื่องหมายอัญประกาศ:
+my_string_var = 'hello'
+print('String:', my_string_var) # String: hello
+ค่าบูลีน : ค่าที่แสดงถึงอย่างใดTrueอย่างFalseหนึ่ง
+my_boolean_var = True
+print('Boolean:', my_boolean_var) # Boolean: True
+เซต : กลุ่มขององค์ประกอบที่ไม่ซ้ำกัน โดยไม่มีลำดับ:
+my_set_var = {7, 5, 8}
+print('Set:', my_set_var) # Set: {7, 5, 8}
+พจนานุกรม : ชุดของคู่คีย์-ค่า ซึ่งล้อมรอบด้วยวงเล็บปีกกา:
+my_dictionary_var = {"name": "Alice", "age": 25}
+print('Dictionary:', my_dictionary_var) # Dictionary: {'name': 'Alice', 'age': 25}
+ทูเพิล (Tuple) : ชุดข้อมูลที่ไม่สามารถเปลี่ยนแปลงได้และเรียงลำดับ โดยอยู่ในวงเล็บ:
+my_tuple_var = (7, 5, 8)
+print('Tuple:', my_tuple_var) # Tuple: (7, 5, 8)
+ช่วง (Range) : ลำดับของตัวเลข ซึ่งมักใช้ในลูป:
+my_range_var = range(5)
+print(my_range_var) # range(0, 5)
+รายการ : ชุดขององค์ประกอบที่เรียงลำดับซึ่งรองรับประเภทข้อมูลต่างๆ:
+my_list = [22, 'Hello world', 3.14, True]
+print(my_list) # [22, 'Hello world', 3.14, True]
+ไม่มี : ค่าพิเศษที่แสดงถึงการไม่มีค่า:
+my_none_var = None
+print('None:', my_none_var) # None: None
+ประเภทที่ไม่เปลี่ยนแปลงและประเภทที่เปลี่ยนแปลงได้
+ประเภทข้อมูลที่ไม่สามารถเปลี่ยนแปลง ได้ (Immutable Types ): ประเภทข้อมูลเหล่านี้ไม่สามารถเปลี่ยนแปลงได้เมื่อประกาศแล้ว แม้ว่าคุณจะสามารถกำหนดค่าตัวแปรให้ชี้ไปยังสิ่งใหม่ได้ ซึ่งเรียกว่าการกำหนดค่าใหม่ (reassignment) ประเภทเหล่านี้ได้แก่ จำนวนเต็ม (integer), ทศนิยม (float), จำนวนเชิงซ้อน (complex), บูลีน (boolean), สตริง (string), ทูเปิล (tuple), ช่วง (range) และอื่นNoneๆ
+ประเภทข้อมูลที่เปลี่ยนแปลงได้ (Mutable Types ): ประเภทข้อมูลเหล่านี้สามารถเปลี่ยนแปลงได้หลังจากประกาศแล้ว คุณสามารถเพิ่ม ลบ หรืออัปเดตรายการต่างๆ ได้ ซึ่งรวมถึงประเภทข้อมูลแบบคอลเลกชัน เช่น รายการ (list), ชุด (set) และพจนานุกรม (dictionary)
+type()ฟังก์ชัน : หากต้องการดูชนิดของตัวแปร คุณสามารถใช้type()ฟังก์ชันได้ดังนี้:
+greeting = 'Hello there!'
+age = 21
+
+print(type(greeting)) # <class 'str'>
+print(type(age)) # <class 'int'>
+isinstance()ฟังก์ชัน : ฟังก์ชันนี้ใช้สำหรับตรวจสอบว่าตัวแปรตรงกับชนิดข้อมูลที่กำหนดหรือไม่:
+greeting = 'Hello world'
+name = 'John Doe'
+
+print(isinstance(greeting, str)) # True
+print(isinstance(name, int)) # False
+การทำงานกับสตริง
+คำจำกัดความ : อย่างที่คุณจำได้จาก JavaScript สตริงนั้นไม่สามารถเปลี่ยนแปลงได้ ซึ่งหมายความว่าคุณไม่สามารถแก้ไขสตริงได้หลังจากที่สร้างขึ้นแล้ว ใน Python คุณสามารถใช้เครื่องหมายอัญประกาศเดี่ยวหรือคู่ก็ได้ ขอแนะนำให้เลือกใช้กฎใดกฎหนึ่งและยึดตามนั้น:
+developer = 'Jessica'
+city = "Los Angeles"
+การเข้าถึงอักขระจากสตริง : คุณสามารถเข้าถึงอักขระจากสตริงได้โดยใช้สัญลักษณ์วงเล็บเหลี่ยมแบบนี้:
+my_str = 'Hello world'
+
+print(my_str[0])  # H
+print(my_str[6])  # w
+
+print(my_str[-1])  # d
+print(my_str[-2]) # l
+การหลีกเลี่ยงอักขระพิเศษในสตริง : คุณสามารถใช้เครื่องหมายแบ็กสแลช ( \) หากสตริงของคุณมีเครื่องหมายอัญประกาศอยู่ภายใน ดังนี้:
+msg = 'It\'s a sunny day'
+quote = "She said, \"Hello!\""
+การเชื่อมต่อสตริง : ในการเชื่อมต่อสตริง คุณสามารถใช้+ตัวดำเนินการได้ดังนี้:
+developer = 'Jessica'
+print('My name is ' + developer + '.') # My name is Jessica.
+อีกวิธีหนึ่งในการเชื่อมต่อสตริงคือการใช้+=ตัวดำเนินการ ซึ่งใช้ในการเชื่อมต่อและกำหนดค่าในขั้นตอนเดียวกัน ดังนี้:
+
+greeting = 'My name is '
+developer = 'Jessica.'
+
+greeting += developer
+print(greeting) # My name is Jessica.
+f-strings: นี่คือคำย่อของ formatted string literals ซึ่งช่วยให้คุณจัดการกับการแทรกค่าและการเชื่อมต่อสตริงได้ด้วยไวยากรณ์ที่กระชับและอ่านง่าย:
+developer = 'Jessica'
+greeting = f'My name is {developer}.'
+print(greeting) # My name is Jessica.
+การตัดแบ่งสตริง (String Slicing ): นี่คือการดึงส่วนต่างๆ ของสตริงออกมา ไวยากรณ์พื้นฐานมีดังนี้:
+str[start:stop:step]
+ตำแหน่งเริ่มต้นแสดงถึงดัชนีที่ควรเริ่มการสกัด ตำแหน่งหยุดคือตำแหน่งที่การตัดควรสิ้นสุด ตำแหน่งนี้ไม่รวมจุดเริ่มต้นและจุดสิ้นสุด ตำแหน่งขั้นตอนแสดงถึงช่วงเวลาที่จะเพิ่มขึ้นสำหรับการตัด ตัวอย่างเช่น:
+
+message = 'Python is fun!'
+
+print(message[0:6])  # Python
+print(message[7:])  # is fun!
+print(message[::2])  # Pto sfn
+การหาความยาวของสตริง : len()ฟังก์ชันนี้ใช้เพื่อส่งคืนจำนวนอักขระในสตริง:
+developer = 'Jessica'
+
+print(len(developer)) # 7
+ทำงานร่วมกับinผู้ปฏิบัติงาน
+inตัวดำเนินการ : ฟังก์ชันนี้จะส่งคืนค่าบูลีนที่ระบุว่ามีอักขระดังกล่าวอยู่ในสตริงหรือไม่:
+my_str = 'Hello world'
+
+print('Hello' in my_str)  # True
+print('hey' in my_str)    # False
+print('hi' in my_str)    # False
+print('e' in my_str)  # True
+print('f' in my_str)  # False
+เมธอดสตริงทั่วไป
+str.upper(): ฟังก์ชันนี้จะส่งคืนสตริงใหม่ที่แปลงอักขระทั้งหมดเป็นตัวพิมพ์ใหญ่:
+developer = 'Jessica'
+
+print(developer.upper()) # JESSICA
+str.lower(): ฟังก์ชันนี้จะส่งคืนสตริงใหม่ที่แปลงอักขระทั้งหมดเป็นตัวพิมพ์เล็ก:
+developer = 'Jessica'
+
+print(developer.lower()) # jessica
+str.strip(): เมธอดนี้จะส่งคืนสำเนาของสตริงโดยลบอักขระนำหน้าและต่อท้ายที่ระบุออก (หากไม่มีการส่งอาร์กิวเมนต์ไปยังเมธอด เมธอดนี้จะลบช่องว่างนำหน้าและต่อท้ายออก)
+greeting = '  hello world  '
+
+trimmed_my_str = greeting.strip()
+print(trimmed_my_str)  # 'hello world'
+replace(): ฟังก์ชันนี้จะส่งคืนสตริงใหม่ โดยแทนที่สตริงเดิมทุกตำแหน่งด้วยสตริงใหม่
+greeting = 'hello world'
+
+replaced_my_str = greeting.replace('hello', 'hi')
+print(replaced_my_str)  # 'hi world'
+split(): ฟังก์ชันนี้ใช้สำหรับแยกสตริงออกเป็นลิสต์โดยใช้ตัวคั่นที่ระบุ ตัวคั่นคือสตริงที่ระบุว่าควรแยกสตริงตรงจุดใด
+dashed_name = 'example-dashed-name'
+
+split_words = dashed_name.split('-')
+print(split_words)  # ['example', 'dashed', 'name']
+join(): ฟังก์ชันนี้ใช้สำหรับรวมองค์ประกอบของ iterable เข้าด้วยกันเป็นสตริงโดยใช้ตัวคั่น Iterable คือกลุ่มขององค์ประกอบที่สามารถวนซ้ำได้เหมือนกับลิสต์ สตริง หรือทูเปิล
+example_list = ['example', 'dashed', 'name']
+
+joined_str = ' '.join(example_list)
+print(joined_str)  # example dashed name
+str.startswith(prefix): ฟังก์ชันนี้จะส่งคืนค่าบูลีนที่ระบุว่าสตริงเริ่มต้นด้วยคำนำหน้าที่ระบุหรือไม่:
+developer = 'Naomi'
+
+result = developer.startswith('N')
+print(result)  # True
+str.endswith(suffix): ฟังก์ชันนี้จะส่งคืนค่าบูลีนที่ระบุว่าสตริงนั้นลงท้ายด้วยคำต่อท้ายที่ระบุหรือไม่:
+developer = 'Naomi'
+
+result = developer.endswith('N')
+print(result)  # False
+str.find(): ฟังก์ชันนี้จะส่งคืนดัชนีสำหรับการปรากฏครั้งแรกของสตริงย่อย หากไม่พบ-1จะส่งคืนค่าอื่น:
+developer = 'Naomi'
+
+result = developer.find('N')
+print(result)  # 0
+
+city = 'Los Angeles'
+print(city.find('New')) # -1
+str.count(substring): ฟังก์ชันนี้จะนับจำนวนครั้งที่สตริงย่อยปรากฏในสตริงหลัก:
+city = 'Los Angeles'
+print(city.count('e')) # 2
+str.capitalize(): ฟังก์ชันนี้จะส่งคืนสตริงใหม่ โดยที่อักขระตัวแรกเป็นตัวพิมพ์ใหญ่ และอักขระที่เหลือเป็นตัวพิมพ์เล็ก:
+dessert = 'chocolate cake'
+print(dessert.capitalize()) # Chocolate cake
+str.isupper(): ฟังก์ชันนี้จะคืนค่าTrueว่าตัวอักษรทั้งหมดในสตริงเป็นตัวพิมพ์ใหญ่หรือไม่ และ คืนค่า Falseว่าไม่ใช่ตัวพิมพ์ใหญ่หากเป็นตัวพิมพ์ใหญ่:
+dessert = 'chocolate cake'
+print(dessert.isupper()) # False
+str.islower(): ฟังก์ชันนี้จะคืนค่าTrueว่าตัวอักษรทั้งหมดในสตริงเป็นตัวพิมพ์เล็กหรือไม่ และ คืนค่า Falseว่าไม่ใช่ตัวพิมพ์เล็กหรือไม่
+dessert = 'chocolate cake'
+print(dessert.islower()) # True
+str.title(): ฟังก์ชันนี้จะส่งคืนสตริงใหม่ โดยที่ตัวอักษรตัวแรกของแต่ละคำจะเป็นตัวพิมพ์ใหญ่:
+city = 'los angeles'
+print(city.title()) # Los Angeles
+str.maketrans(): วิธีนี้ใช้ในการสร้างตารางการจับคู่ตัวอักษรแบบ 1 ต่อ 1 สำหรับการแปล โดยมักใช้ร่วมกับtranslate()วิธีที่นำตารางนั้นไปใช้กับสตริงและส่งคืนผลลัพธ์ที่แปลแล้ว
+trans_table = str.maketrans('abc', '123')
+print(trans_table) # {97: 49, 98: 50, 99: 51}
+
+result = 'abcabc'.translate(trans_table)
+print(result)  # 123123
+การดำเนินการทั่วไปที่ใช้กับจำนวนเต็มและจำนวนทศนิยม
+การคำนวณทางคณิตศาสตร์พื้นฐาน : ใน Python คุณสามารถทำการคำนวณทางคณิตศาสตร์พื้นฐานกับจำนวนเต็มและจำนวนทศนิยมได้ เช่น การบวก การลบ การคูณ และการหาร:
+int_1 = 56
+int_2 = 12
+float_1 = 5.4
+float_2 = 12.0
+
+# Addition
+
+print('Integer Addition:', int_1 + int_2) # Integer Addition: 68
+print('Float Addition:', float_1 + float_2) # Float Addition: 17.4
+
+# Subtraction
+
+print('Int Subtraction:', int_1 - int_2) # Int Subtraction: 44
+print('Float Subtraction:',  float_2 - float_1) # Float Subtraction: 6.6
+
+# Multiplication
+
+print('Int Multiplication:', int_1 * int_2) # Int Multiplication: 672
+print('Float Multiplication:', float_2 * float_1) # Float Multiplication: 64.80000000000001
+
+# Division
+
+print('Division:', int_1 / int_2) # Division: 4.666666666666667
+print('Float Division:', float_2 / float_1) # Float Division: 2.222222222222222
+เมื่อคุณบวกเลขทศนิยมกับเลขจำนวนเต็ม ผลลัพธ์จะถูกแปลงเป็นเลขทศนิยมดังนี้:
+
+int_1 = 56
+float_1 = 5.4
+
+print(int_1 + float_1) # 61.4
+ตัวดำเนินการโมดูลัส ( %) : ฟังก์ชันนี้จะคืนค่าเศษเหลือเมื่อหารตัวเลขหนึ่งด้วยตัวเลขอีกตัวหนึ่ง:
+int_1 = 56
+int_2 = 12
+
+print(int_1 % int_2) # 8
+การหารพื้น ( //) : ตัวดำเนินการนี้ใช้สำหรับหารตัวเลขสองตัวและปัดเศษผลลัพธ์ลงให้เป็นจำนวนเต็มที่ใกล้ที่สุด:
+int_1 = 56
+int_2 = 12
+
+print(int_1 // int_2) # 4
+ตัวดำเนินการยกกำลัง ( **) : ตัวดำเนินการนี้ใช้สำหรับยกกำลังจำนวนหนึ่งด้วยอีกจำนวนหนึ่ง:
+int_1 = 4
+int_2 = 2
+
+print(int_1 ** int_2) # 16
+float()ฟังก์ชัน : คุณสามารถใช้ฟังก์ชันนี้เพื่อแปลงจำนวนเต็มเป็นจำนวนทศนิยมได้
+num = 4
+
+print(float(num)) # 4.0
+int()ฟังก์ชัน : คุณสามารถใช้ฟังก์ชันนี้เพื่อแปลงค่าทศนิยมเป็นจำนวนเต็มได้
+num = 4.0
+
+print(int(num)) # 4
+round()ฟังก์ชัน : ฟังก์ชันนี้ใช้สำหรับปัดเศษตัวเลขให้เป็นจำนวนเต็มที่ใกล้ที่สุด:
+num_1 = 3.4
+num_2 = 7.7
+
+print(round(num_1)) # 3
+print(round(num_2)) # 8
+abs()ฟังก์ชัน : ฟังก์ชันนี้ใช้สำหรับส่งคืนค่าสัมบูรณ์ของตัวเลข:
+num = -13
+
+print(abs(num)) # 13
+pow()ฟังก์ชัน : ฟังก์ชันนี้ใช้สำหรับยกกำลังจำนวนหนึ่งด้วยอีกจำนวนหนึ่ง:
+result = pow(2, 3) 
+print(result)  # 8
+การมอบหมายงานเพิ่มเติม
+คำจำกัดความ : การกำหนดค่าแบบเสริม (Augmented assignment) คือการรวมการดำเนินการแบบไบนารีกับการกำหนดค่าเข้าไว้ในขั้นตอนเดียว โดยจะรับตัวแปรหนึ่งตัว ดำเนินการกับตัวแปรนั้นด้วยค่าอื่น และเก็บผลลัพธ์กลับเข้าไปในตัวแปรเดิม
+# Addition assignment 
+my_var = 10
+my_var += 5
+
+print(my_var) # 15
+
+# Subtraction assignment
+count = 14
+count -= 3
+
+print(count) # 11
+
+# Multiplication assignment 
+product = 65
+product *= 7
+
+print(product) # 455
+
+# Division assignment 
+price = 100
+price /= 4
+
+print(price) # 25.0
+
+# Floor Division assignment 
+total_pages = 23
+total_pages //= 5
+
+print(total_pages) # 4
+
+# Modulo assignment 
+bits = 35
+bits %= 2
+
+print(bits) # 1
+
+# Exponentiation assignment 
+power = 2
+power **= 3
+
+print(power) # 8
+นอกจากนี้ยังมีตัวดำเนินการกำหนดค่าเสริมอื่นๆ อีก เช่น ตัวดำเนินการบิตไวส์ ซึ่งได้แก่&=, ^=, >>=, และ<<=.
+
+การทำงานกับฟังก์ชัน
+นิยาม : ฟังก์ชันคือส่วนของโค้ดที่สามารถนำกลับมาใช้ซ้ำได้ โดยรับอินพุต (อาร์กิวเมนต์) และส่งคืนค่าเอาต์พุต ในการเรียกใช้ฟังก์ชัน คุณต้องอ้างอิงถึงชื่อฟังก์ชันตามด้วยวงเล็บ:
+# Defining a function
+
+def get_sum(num_1, num_2):
+    return num_1 + num_2
+
+result = get_sum(3, 4) # function call
+print(result) # 7
+หากฟังก์ชันไม่ได้ระบุค่าส่งคืนอย่างชัดเจน ค่าส่งคืนเริ่มต้นจะเป็นNone:
+
+def greet():
+    print('hello') 
+
+result = greet() # hello
+print(result) # None
+นอกจากนี้ คุณยังสามารถกำหนดค่าเริ่มต้นให้กับพารามิเตอร์ได้ดังนี้:
+
+def get_sum(num_1, num_2=2):
+    return num_1 + num_2
+
+result = get_sum(3) 
+print(result) # 5
+หากคุณเรียกใช้ฟังก์ชันโดยไม่ระบุจำนวนอาร์กิวเมนต์ที่ถูกต้อง คุณจะได้รับข้อความแสดงข้อผิดพลาดTypeError:
+
+def calculate_sum(a, b):
+    print(a + b)
+
+calculate_sum()
+
+# TypeError: calculate_sum() missing 2 required positional arguments: 'a' and 'b'
+ฟังก์ชันพื้นฐานทั่วไป
+input()ฟังก์ชัน : ฟังก์ชันนี้ใช้สำหรับแจ้งให้ผู้ใช้ป้อนข้อมูลบางอย่าง:
+name = input('What is your name?') # User types 'Kolade' and presses Enter  
+print('Hello', name) # Hello Kolade
+int()ฟังก์ชัน : ฟังก์ชันนี้ใช้สำหรับแปลงตัวเลข ค่าบูลีน หรือสตริงตัวเลข ให้เป็นจำนวนเต็ม:
+print(int(3.14)) # 3
+print(int('42')) # 42
+print(int(True)) # 1
+print(int(False)) # 0 
+ขอบเขตในภาษา Python
+ขอบเขตการใช้งานเฉพาะที่ (Local Scope ): คือกรณีที่ตัวแปรที่ประกาศไว้ภายในฟังก์ชันหรือคลาส จะสามารถเข้าถึงได้เฉพาะภายในฟังก์ชันหรือคลาสนั้นเท่านั้น
+def my_func():
+    num = 10
+    print(num)
+ขอบเขตการครอบคลุม : นี่คือกรณีที่ฟังก์ชันที่ซ้อนอยู่ภายในฟังก์ชันอื่น สามารถเข้าถึงตัวแปรของฟังก์ชันที่มันซ้อนอยู่ภายในได้
+def outer_func():
+    msg = 'Hello there!'
+    
+    def inner_func():
+        print(msg)
+    inner_func()
+
+print(outer_func()) # Hello there!
+ขอบเขตทั่วโลก (Global Scope ): หมายถึงตัวแปรที่ประกาศอยู่นอกฟังก์ชันหรือคลาสใดๆ ซึ่งสามารถเข้าถึงได้จากทุกที่ในโปรแกรม
+tax = 0.70 
+
+def get_total(subtotal):
+    total = subtotal + (subtotal * tax)
+    return total
+
+print(get_total(100))  # 170.0
+ขอบเขตในตัว (Built-in Scope) : ชื่อที่สงวนไว้ใน Python สำหรับฟังก์ชัน โมดูล คีย์เวิร์ด และอ็อบเจ็กต์ที่กำหนดไว้ล่วงหน้า
+print(str(45)) # '45'
+print(type(3.14)) # <class 'float'>
+print(isinstance(3, str)) # False
+ตัวดำเนินการเปรียบเทียบ
+เท่ากับ ( ==) : ตรวจสอบว่าค่าสองค่าเท่ากันหรือไม่:
+print(3 == 4) # False
+ไม่เท่ากัน ( !=) : ตรวจสอบว่าค่าสองค่าไม่เท่ากันหรือไม่:
+print(3 != 4) # True
+มากกว่าอย่างเคร่งครัด ( >) : ตรวจสอบว่าค่าหนึ่งมากกว่าอีกค่าหนึ่งหรือไม่:
+print(3 > 4) # False
+น้อยกว่าอย่างเคร่งครัด ( <) : ตรวจสอบว่าค่าหนึ่งน้อยกว่าอีกค่าหนึ่งหรือไม่:
+print(3 < 4) # True
+มากกว่าหรือเท่ากับ( >=) : ตรวจสอบว่าค่าหนึ่งมากกว่าหรือเท่ากับอีกค่าหนึ่งหรือไม่:
+print(3 >= 4) # False
+น้อยกว่าหรือเท่ากับ( <=) : ตรวจสอบว่าค่าหนึ่งน้อยกว่าหรือเท่ากับอีกค่าหนึ่งหรือไม่:
+print(3 <= 4) # True
+การทำงานร่วมกับifและelifข้อความelseต่างๆ
+ifคำสั่ง : คำสั่งเหล่านี้คือเงื่อนไขที่ใช้ในการตรวจสอบว่าสิ่งใดเป็นจริงหรือไม่ ถ้าเงื่อนไขนั้นเป็นจริงTrueโค้ดส่วนนั้นก็จะทำงาน
+age = 18
+
+if age >= 18:
+    print('You are an adult') # You are an adult
+elifเงื่อนไข (Claim ): คือเงื่อนไขที่อยู่หลังifคำสั่งelifเงื่อนไขจะทำงานได้ก็ต่อเมื่อเงื่อนไขก่อนหน้าทั้งหมดมีค่าเป็นจริงFalseและเงื่อนไขของเงื่อนไขเองก็มีค่าเป็นจริงเช่นTrueกัน
+age = 16
+
+if age >= 18:
+    print('You are an adult')
+elif age >= 13:
+    print('You are a teenager')  # You are a teenager
+elseข้อความนี้จะทำงานก็ต่อเมื่อไม่มีเงื่อนไขอื่นใดที่ประเมินค่าได้เป็นTrue.
+age = 12
+
+if age >= 18:
+    print('You are an adult')
+elif age >= 13:
+    print('You are a teenager')
+else:
+    print('You are a child')  # You are a child
+คุณสามารถใช้ifคำสั่งซ้อนกันได้ดังนี้:
+
+is_citizen = True
+age = 25
+
+if is_citizen:
+    if age >= 18:
+        print('You are eligible to vote') # You are eligible to vote
+else:
+    print('You are not eligible to vote')
+ค่าความจริงและค่าเท็จ
+คำจำกัดความ : ในภาษา Python ทุกค่าจะมีค่าบูลีนโดยกำเนิด หรือมีความหมายในตัวว่าควรได้รับการพิจารณาว่าเป็นจริงTrueหรือFalseเท็จในบริบทเชิงตรรกะ ค่าหลายค่าถือว่าเป็นค่าที่เป็นจริง (truthy) กล่าวคือ เมื่อประเมินค่าแล้วจะได้ค่าเป็นจริงTrueในบริบทเชิงตรรกะ ส่วนค่าอื่นๆ ถือว่าเป็นค่าเท็จ (falsy) หมายความว่าเมื่อประเมินค่าแล้วจะได้Falseค่าเป็นเท็จ ตัวอย่างของค่าเท็จมีดังนี้:
+None
+False
+Integer 0
+Float 0.0
+Empty strings ''
+ค่าอื่นๆ เช่น ตัวเลขที่ไม่ใช่ศูนย์ และสตริงที่ไม่ว่างเปล่า ถือเป็นค่าความจริง
+
+การทำงานร่วมกับbool()ฟังก์ชัน
+คำจำกัดความ : หากคุณต้องการตรวจสอบว่าค่าใดเป็นจริงหรือเท็จ คุณสามารถใช้ฟังก์ชันในตัวได้bool()ฟังก์ชันนี้จะแปลงค่าเป็นค่าบูลีนโดยตรง และส่งคืนTrueค่าจริงสำหรับค่าที่เป็นจริง และFalseค่าเท็จสำหรับค่าที่เป็นเท็จ ต่อไปนี้เป็นตัวอย่างบางส่วน:
+print(bool(False)) # False
+print(bool(0))  # False
+print(bool('')) # False
+
+print(bool(True)) # True
+print(bool(1)) # True
+print(bool('Hello')) # True
+ตัวดำเนินการบูลีนและการลัดวงจร
+คำจำกัดความ : ตัวดำเนินการเหล่านี้เป็นตัวดำเนินการพิเศษที่ช่วยให้คุณสามารถรวมนิพจน์หลายๆ ตัวเข้าด้วยกันเพื่อสร้างตรรกะการตัดสินใจที่ซับซ้อนยิ่งขึ้นในโค้ดของคุณ ใน Python มีตัวดำเนินการบูลีนสามตัว ได้แก่ `true`, `false`, `false` andและor` notfalse`
+andตัวดำเนินการ : ตัวดำเนินการนี้รับตัวถูกดำเนินการสองตัว และจะคืนค่าตัวถูกดำเนินการตัวแรกหากเป็นค่าเท็จ มิฉะนั้นจะคืนค่าตัวถูกดำเนินการตัวที่สอง ตัวถูกดำเนินการทั้งสองต้องเป็นค่าจริงจึงจะได้ผลลัพธ์เป็นค่าจริง
+is_citizen = True
+age = 25
+
+print(is_citizen and age) # 25
+คุณสามารถใช้andตัวดำเนินการในเงื่อนไขได้ดังนี้:
+
+is_citizen = True
+age = 25
+
+if is_citizen and age >= 18:
+    print('You are eligible to vote') # You are eligible to vote
+else:
+    print('You are not eligible to vote')
+orตัวดำเนินการ : ตัวดำเนินการนี้จะคืนค่าตัวถูกดำเนินการตัวแรกหากเป็นค่าที่เป็นจริง มิฉะนั้นจะคืนค่าตัวถูกดำเนินการตัวที่สองorนิพจน์จะมีค่าเป็นจริงก็ต่อเมื่อมีตัวถูกดำเนินการอย่างน้อยหนึ่งตัวเป็นค่าที่เป็นจริง นี่คือตัวอย่าง:
+age = 19
+is_employed = False
+
+print(age or is_employed) # 19
+เช่นเดียวกับandตัวดำเนินการ คุณสามารถใช้orตัวดำเนินการในเงื่อนไขได้ดังนี้:
+
+age = 19
+is_student = True
+
+if age < 18 or is_student:
+    print('You are eligible for a student discount') # You are eligible for a student discount
+else:
+    print('You are not eligible for a student discount')
+การทำงานแบบลัดวงจร : ตัวดำเนินการ and`and` orเป็นที่รู้จักกันในชื่อตัวดำเนินการแบบลัดวงจร การทำงานแบบลัดวงจรหมายความว่า Python ตรวจสอบค่าจากซ้ายไปขวาและหยุดทันทีที่ได้ผลลัพธ์สุดท้าย
+notตัวดำเนินการ : ตัวดำเนินการนี้รับตัวถูกดำเนินการเพียงตัวเดียวและกลับค่าบูลีนของมัน โดยจะแปลงค่าที่เป็นจริง (truthy) เป็นFalseค่าเท็จ (falsy) เป็นค่าบวก (false True) แตกต่างจากตัวดำเนินการก่อนหน้านี้ที่เราได้ดูไป ตัวดำเนินการนี้ จะคืนค่าเป็นจริง หรือ เท็จ notเสมอนี่คือตัวอย่างบางส่วน:TrueFalse
+print(not '') # True, because empty string is falsy
+print(not 'Hello') # False, because non-empty string is truthy
+print(not 0) # True, because 0 is falsy
+print(not 1) # False, because 1 is truthy
+print(not False) # True, because False is falsy
+print(not True) # False, because True is truthy
+ต่อไปนี้เป็นตัวอย่างnotการใช้ตัวดำเนินการในเงื่อนไข:
+
+is_admin = False
+
+if not is_admin:
+    print('Access denied for non-administrators.') # Access denied for non-administrators.
+else:
+    print('Welcome, Administrator!')
